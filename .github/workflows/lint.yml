@@ -1,0 +1,17 @@
+name: Lint
+
+on: [push, pull_request]
+  
+jobs:
+  inspect-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint
+        uses: JetBrains/ReSharper-InspectCode@v0.8
+        with:
+          solution: ./TemperatureAnalysis.sln
+
+    permissions:
+      security-events: write

@@ -10,8 +10,16 @@ namespace TemperatureAnalysis
     {
         public static void Generate(string filename, string[] data)
         {
-            File.WriteAllLines(filename, data);
-            Console.WriteLine($"Created test file: {filename}");
+            string content = string.Join(Environment.NewLine, data);
+            if (FileUtils.TryWriteAllText(filename, content))
+            {
+                Console.WriteLine($"Created test file: {filename}");
+            }
+            else
+            {
+                Console.WriteLine($"Failed to create test file: {filename}");
+            }
         }
     }
 }
+

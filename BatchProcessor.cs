@@ -12,13 +12,11 @@ namespace TemperatureAnalysis
         {
             try
             {
-                if (!File.Exists(filename))
+                if (!FileUtils.TryReadAllLines(filename, out string[] lines))
                 {
                     Console.WriteLine("Error: File not found.");
                     return;
                 }
-
-                string[] lines = File.ReadAllLines(filename);
                 var records = new List<TemperatureRecord>();
                 var badLines = new List<(int index, string line, string error)>();
 

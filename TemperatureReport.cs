@@ -2,30 +2,13 @@
 {
     public class TemperatureReport
     {
-        public static void PrintSummary(
+        public static void OutputSummary(
             int total, int valid, int errors,
-            TemperatureStatistics? stats,
-            List<(int index, string line, string error)> badLines)
-        {
-            OutputSummary(
-                null, total, valid, errors, stats, badLines, true, null);
-        }
-
-        public static void SaveSummary(
-            string outName, string filename,
-            int total, int valid, int errors,
-            TemperatureStatistics? stats,
-            List<(int index, string line, string error)> badLines)
-        {
-            OutputSummary(
-                filename, total, valid, errors, stats, badLines, false, outName);
-        }
-
-        private static void OutputSummary(
-            string? filename, int total, int valid, int errors,
             TemperatureStatistics? stats,
             List<(int index, string line, string error)> badLines,
-            bool toConsole, string? outName)
+            bool toConsole,
+            string? outName = null,
+            string? filename = null)
         {
             string summary = SummaryFormatter.Format(
                 filename, total, valid, errors, stats, badLines, toConsole);

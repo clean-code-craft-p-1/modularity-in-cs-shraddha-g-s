@@ -31,14 +31,14 @@
 
                 var stats = new TemperatureStatistics(records);
 
-                TemperatureReport.PrintSummary(
-                    lines.Length, records.Count, badLines.Count, stats, badLines);
+                TemperatureReport.OutputSummary(
+                    lines.Length, records.Count, badLines.Count, stats, badLines, true);
 
                 string outName = filename + "_summary.txt";
                 try
                 {
-                    TemperatureReport.SaveSummary(
-                        outName, filename, lines.Length, records.Count, badLines.Count, stats, badLines);
+                    TemperatureReport.OutputSummary(
+                        lines.Length, records.Count, badLines.Count, stats, badLines, false, outName, filename);
                     Console.WriteLine($"Report saved to {outName}");
                 }
                 catch (Exception e)
